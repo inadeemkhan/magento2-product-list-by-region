@@ -1,10 +1,5 @@
-# Mage2 Module Nadeem RegionBasedProducts
-
- - Unzip the zip file in `app/code/Nadeem`
- - 
- 
- # Magento2 Preventy Add To Cart
-Magento2 extension to prevent add to cart action if customer is not logged in.
+# Magento2 Product List by Region
+Magento2 extension to show products based on customer loaction at Product List Page.
 
 ## Features:
 1. To show products based on customer loaction at Product List Page.
