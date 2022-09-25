@@ -1,5 +1,5 @@
 # Magento2 Product List by Region
-Magento2 extension to show products based on customer loaction at Product List Page.
+Magento2 extension to show products based on customer location on the Product List Page.
 
 ## Features:
 1. To show products based on customer loaction at Product List Page.
