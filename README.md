@@ -23,7 +23,7 @@ Want to contribute to this extension? The quickest way is to <a href="https://he
 
 # Screenshots & Support
 
-If you encounter any problems or bugs, please <a href="https://github.com/mageprince/magento2-prevent-add-to-cart/issues">open an issue</a> on GitHub.
+If you encounter any problems or bugs, please <a href="https://github.com/mageprince/magento2-product-list-by-region/issues">open an issue</a> on GitHub.
 
 <b>Product Details Page in Admin</b>
 ![ScreenShot](https://github.com/inadeemkhan/magento2-images/blob/master/RBP-Admin-2.png)
