@@ -1,18 +1,23 @@
 <?xml version="1.0" ?>
+<!--
+/**
+* Copyright © Nadeem. All rights reserved.
+*/
+-->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
 	<system>
 		<tab id="nadeem" translate="label" sortOrder="999">
-			<label>nadeem</label>
+			<label>Nadeem</label>
 		</tab>
 		<section id="region_based_products" sortOrder="10" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
-			<label>region_based_products</label>
+			<label>Region Based Products</label>
 			<tab>nadeem</tab>
 			<resource>Nadeem_RegionBasedProducts::config_nadeem_regionbasedproducts</resource>
 			<group id="general" sortOrder="10" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
-				<label>general</label>
+				<label>General</label>
 				<field id="enable" type="select" sortOrder="10" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
-					<label>enable</label>
-					<comment/>
+					<label>Enable</label>
+					<comment><![CDATA[ Select <strong>Yes</strong> to enable the feature. ]]></comment>
 					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
 				</field>
 			</group>
