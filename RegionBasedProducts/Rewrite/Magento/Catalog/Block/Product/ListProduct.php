@@ -26,6 +26,8 @@ use Magento\Framework\Pricing\Render;
 use Magento\Framework\Url\Helper\Data;
 use Magento\Framework\App\ObjectManager;
 use Magento\Catalog\Helper\Output as OutputHelper;
+use Nadeem\RegionBasedProducts\Helper\DataHelper;
+use Psr\Log\LoggerInterface;
 
 /**
  * Product list
@@ -35,41 +37,44 @@ use Magento\Catalog\Helper\Output as OutputHelper;
  */
 class ListProduct extends \Magento\Catalog\Block\Product\ListProduct
 {
-/**
+    /**
      * Default toolbar block name
      *
      * @var string
      */
     protected $_defaultToolbarBlock = Toolbar::class;
-
     /**
      * Product Collection
      *
      * @var AbstractCollection
      */
     protected $_productCollection;
-
     /**
      * Catalog layer
      *
      * @var Layer
      */
     protected $_catalogLayer;
-
     /**
      * @var PostHelper
      */
     protected $_postDataHelper;
-
     /**
      * @var Data
      */
     protected $urlHelper;
-
     /**
      * @var CategoryRepositoryInterface
      */
     protected $categoryRepository;
+    /**
+     * @var DataHelper
+     */
+    protected $_helper;
+    /**
+     * @var LoggerInterface
+     */
+    protected $logger;
 
     /**
      * @param PostHelper $postDataHelper
@@ -78,6 +83,8 @@ class ListProduct extends \Magento\Catalog\Block\Product\ListProduct
      * @param Data $urlHelper
      * @param array $data
      * @param OutputHelper|null $outputHelper
+     * @param DataHelper $helper
+     * @param LoggerInterface $logger
      */
     public function __construct(
         \Magento\Catalog\Block\Product\Context $context,
@@ -85,6 +92,8 @@ class ListProduct extends \Magento\Catalog\Block\Product\ListProduct
         Resolver $layerResolver,
         CategoryRepositoryInterface $categoryRepository,
         Data $urlHelper,
+        DataHelper $helper,
+        LoggerInterface $logger, 
         array $data = [],
         ?OutputHelper $outputHelper = null
     ) {
@@ -92,6 +101,7 @@ class ListProduct extends \Magento\Catalog\Block\Product\ListProduct
         $this->_postDataHelper = $postDataHelper;
         $this->categoryRepository = $categoryRepository;
         $this->urlHelper = $urlHelper;
+        $this->_helper = $helper;
         $data['outputHelper'] = $outputHelper ?? ObjectManager::getInstance()->get(OutputHelper::class);
         parent::__construct(
             $context,
@@ -122,14 +132,18 @@ class ListProduct extends \Magento\Catalog\Block\Product\ListProduct
     protected function _getProductCollection()
     {
         if ($this->_productCollection === null) {
-            $this->_productCollection = $this->initializeProductCollection();
-            $this->_productCollection->addAttributeToFilter(
-                'region',
-                ['eq' => ' noida']
-            );
+            // Checking if functionaliy is enable.
+            $regionName = $this->_helper->getCustomerRegionName();
+            if (!empty($regionName)) {
+                $this->_productCollection = $this->initializeProductCollection();
+                $this->_productCollection->addAttributeToFilter(
+                    'region',
+                    ['eq' => $regionName]
+                );
+            }
         }
-
         return $this->_productCollection;
+        
     }
 
     /**
