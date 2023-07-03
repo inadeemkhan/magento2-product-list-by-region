@@ -2,16 +2,16 @@
 Magento2 extension to show products based on customer location on the Product List Page.
 
 ## Features:
-1. To show products based on customer loaction at Product List Page.
-2. Fetchung customer's address informations from IP address. Filtering List based on Product Attribute.
-2. Looks like core functionality of Magento (at backend as well as frontend)
+1. To show products based on customer location on the Product List Page.
+2. Fetch the customer's address information from an IP address. Filtering List based on Product Attribute.
+2. Looks like the core functionality of Magento (at the backend as well as frontend)
 3. Unencrypted code for easy customization.
 
 # Installation Instruction
 
-* Copy the content of the repo to the <b>app/code/Nadeem//</b> folder
+* Copy the content of the repo to the <b>app/code/Nadeem/</b> folder
 * Enable the module by running `php bin/magento module:enable Nadeem_RegionBasedProducts`
-* Run command:
+* Run the command:
 <b>php bin/magento setup:upgrade</b>
 * Run Command:
 <b>php bin/magento setup:static-content:deploy</b>
